@@ -1,0 +1,12 @@
+applications:
+- name: zipkin
+  domains:
+  - cfapps.pez.pivotal.io  
+  path: target/zipkin-server-0.0.1-SNAPSHOT.jar
+  buildpack: java_buildpack_offline
+  services:
+  - zipkin-db # cf create-service p-mysql 100mb-dev zipkin-db
+  - zipkin-rabbit # cf create-service p-rabbitmq standard zipkin-rabbit
+  env:
+    security.oauth2.client.client-id: 264e2eb8d07b7baec9e6
+    security.oauth2.client.client-secret: 8b311de04c97c4010bb7e9fafd8a0f785861905a
